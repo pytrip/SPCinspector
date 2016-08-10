@@ -51,13 +51,13 @@ class SPC(object):
                         db[-1].species.append(SBlock())
                         db[-1].species[-1].z = pl[0]
                         db[-1].species[-1].a = pl[1]
-                        db[-1].species[-1].lz = pl[2]
-                        db[-1].species[-1].la = pl[3]
+                        db[-1].species[-1].lz = int(pl[2])
+                        db[-1].species[-1].la = int(pl[3])
 
                     t.get_tag()    
                     if t.code == 14:
                         pl = self.get_payload(fd,t)
-                        db[-1].species[-1].dsnorm = pl
+                        db[-1].species[-1].dscum = pl
 
                     t.get_tag()    
                     if t.code == 15:
@@ -72,10 +72,10 @@ class SPC(object):
                     t.get_tag()        
                     if t.code == 17:
                         pl = self.get_payload(fd,t)
-                        db[-1].species[-1].ebindata = pl                    
+                        db[-1].species[-1].ebindata = pl                        
                     if t.code == 18: # both tags will not be present
                         pl = self.get_payload(fd,t)
-                        db[-1].species[-1].ebindata = db[0].species[0].ebindata
+                        db[-1].species[-1].ebindata = db[0].species[pl].ebindata
 
                     t.get_tag()                                
                     if t.code == 19:
@@ -83,9 +83,9 @@ class SPC(object):
                         db[-1].species[-1].histdata = pl
 
                     t.get_tag()            
-                    if t.code == 20:
+                    if t.code == 20: # running cummulative sum
                         pl = self.get_payload(fd,t)
-                        db[-1].species[-1].cum = pl
+                        db[-1].species[-1].rcumdata = pl
                         
             self.data = db
 
@@ -177,14 +177,10 @@ class SPC(object):
             payload[0] = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))
             payload[1] = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))
 
+            #todo: fix types
             sdtype = ste + 'u4'
             payload[2] = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))
             payload[3] = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))
-
-            #self.z = payload[0]
-            #self.a = payload[1]
-            #self.lz = payload[2]
-            #self.la = payload[3]
             
             return payload
             
@@ -213,7 +209,7 @@ class SPC(object):
             #self.ebindata = payload
             return payload
         
-        if tag.code == 18: # EREF: if tag is set, then use copy of ebin from tag #17.
+        if tag.code == 18: # EREF: if tag is set, then use copy of ebin from species os stated in the file.
             sdtype = ste + 'u8'
             cnt = int(tag.size/8)
             payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0]
@@ -251,7 +247,7 @@ class SBlock(object): # particle speicies block
         self.ne = 0
         self.ebindata = []
         self.histdata = []
-        self.cum = 0.0
+        self.rcumdata = []
         
 
 class Tag(object):

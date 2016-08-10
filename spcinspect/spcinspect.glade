@@ -179,184 +179,12 @@
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="row_spacing">2</property>
-                <property name="column_spacing">2</property>
-                <child>
-                  <object class="GtkLabel" id="label24">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">label24</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">28</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label23">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">label23</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">27</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="button1">
-                    <property name="label" translatable="yes">Export</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <signal name="clicked" handler="onButtonPressed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">30</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton">
-                    <property name="label" translatable="yes">Quit</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <signal name="clicked" handler="main_quit" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">30</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">Contents / bin width</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">28</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">Contents</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">27</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">Energy bin width 
-[MeV/u]</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">26</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">Energy (min,max) 
-[MeV/u]</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">25</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">Energy bin</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">24</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">#Energy bins</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">23</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label22">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">label22</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">26</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label20">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">label20</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">23</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label21">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">label21</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">25</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSpinButton" id="spin3">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="adjustment">adjustment3</property>
-                    <property name="climb_rate">1</property>
-                    <property name="snap_to_ticks">True</property>
-                    <property name="numeric">True</property>
-                    <property name="wrap">True</property>
-                    <signal name="value-changed" handler="on_spin3_value_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">24</property>
-                  </packing>
-                </child>
+                <property name="margin_left">2</property>
+                <property name="margin_right">2</property>
+                <property name="margin_top">2</property>
+                <property name="margin_bottom">2</property>
+                <property name="row_spacing">4</property>
+                <property name="column_spacing">4</property>
                 <child>
                   <object class="GtkSeparator">
                     <property name="visible">True</property>
@@ -381,6 +209,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">&lt;nC&gt; is reserved for later use, so that lateral scattering for each fragment can be included. At present nC=0.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">nC</property>
                   </object>
@@ -393,6 +222,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">The scalar Cum value is the cumulated number (running sum) of fragments, i.e. the species sum over Cum[nE]. This number may exceed 1, since for an incoming primary particle many secondaries are created.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Cum</property>
                   </object>
@@ -405,6 +235,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Charge and atomic mass (or nucleon number?), stored as integers in the file.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Z,A (int)</property>
                   </object>
@@ -417,6 +248,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Charge and atomic mass, stored as float in the file.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Z,A (float)</property>
                   </object>
@@ -429,6 +261,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Currently selected species index.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Species</property>
                   </object>
@@ -441,6 +274,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Number of particle species in this depth step.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">#Species</property>
                   </object>
@@ -460,9 +294,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label19">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">&lt;nC&gt; is reserved for later use, so that lateral scattering for each fragment can be included. At present nC=0.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label19</property>
                   </object>
@@ -475,6 +310,7 @@
                   <object class="GtkLabel" id="label18">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">The scalar Cum value is the cumulated number (running sum) of fragments, i.e. the species sum over Cum[nE]. This number may exceed 1, since for an incoming primary particle many secondaries are created.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label18</property>
                   </object>
@@ -487,6 +323,7 @@
                   <object class="GtkLabel" id="label17">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Charge and atomic mass (or nucleon number?), stored as integers in the file.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label17</property>
                   </object>
@@ -499,6 +336,7 @@
                   <object class="GtkLabel" id="label16">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Charge and atomic mass, stored as float in the file.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label16</property>
                   </object>
@@ -511,6 +349,7 @@
                   <object class="GtkLabel" id="label15">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Number of particle species in this depth step.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label15</property>
                   </object>
@@ -523,6 +362,7 @@
                   <object class="GtkSpinButton" id="spin2">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">Currently selected species index.</property>
                     <property name="adjustment">adjustment2</property>
                     <property name="climb_rate">1</property>
                     <property name="snap_to_ticks">True</property>
@@ -549,6 +389,7 @@
                   <object class="GtkLabel" id="label14">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Normalization for this depth step, usually = 1.0</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label14</property>
                   </object>
@@ -561,7 +402,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Normalization for the selected depth step.</property>
+                    <property name="tooltip_text" translatable="yes">Normalization for this depth step, usually = 1.0</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">DepthNorm</property>
                   </object>
@@ -574,6 +415,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Current depth in the target.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Depth [g/cm2]</property>
                   </object>
@@ -586,6 +428,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Currently selected depth step.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Depth step</property>
                   </object>
@@ -598,6 +441,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Number of depth steps.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">#Depth steps</property>
                   </object>
@@ -610,6 +454,7 @@
                   <object class="GtkLabel" id="label13">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Current depth in the target.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label13</property>
                   </object>
@@ -622,6 +467,7 @@
                   <object class="GtkLabel" id="label12">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Number of depth steps.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label12</property>
                   </object>
@@ -634,6 +480,7 @@
                   <object class="GtkSpinButton" id="spin1">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">Currently selected depth step.</property>
                     <property name="adjustment">adjustment1</property>
                     <property name="climb_rate">1</property>
                     <property name="snap_to_ticks">True</property>
@@ -671,6 +518,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Normalization, usually = 1.0</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Normalization</property>
                   </object>
@@ -683,6 +531,7 @@
                   <object class="GtkLabel" id="label8">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Normalization, usually = 1.0</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label8</property>
                   </object>
@@ -695,6 +544,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Position of the Bragg-peak.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Peak position [g/cm2]</property>
                   </object>
@@ -719,6 +569,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Projectile name.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Projectile</property>
                   </object>
@@ -731,6 +582,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Target name, usually H2O.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Target</property>
                   </object>
@@ -743,6 +595,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">File creation date as returned by the ctime() function. (&lt;dow&gt; &lt;mmm&gt; &lt;dd&gt; &lt;hh&gt;:&lt;mm&gt;:&lt;ss&gt; &lt;yyyy&gt;)</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Date</property>
                   </object>
@@ -755,6 +608,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">File format version as yyyymmdd. 19980704 is the "classic" format (fixed energy range), whereas 20020107 is reserved for future possible variable energy range.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Fileversion</property>
                   </object>
@@ -767,6 +621,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">"SPCM" or "SPCI", specifying big ("Motorola") or little ("Intel") endian byte order, respectively.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Filetype</property>
                   </object>
@@ -779,6 +634,7 @@
                   <object class="GtkLabel" id="label7">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Position of the Bragg-peak.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label7</property>
                   </object>
@@ -803,6 +659,7 @@
                   <object class="GtkLabel" id="label5">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Projectile name.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label5</property>
                   </object>
@@ -815,6 +672,7 @@
                   <object class="GtkLabel" id="label4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Target name, usually H2O.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label4</property>
                   </object>
@@ -827,6 +685,7 @@
                   <object class="GtkLabel" id="label3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">File creation date as returned by the ctime() function. (&lt;dow&gt; &lt;mmm&gt; &lt;dd&gt; &lt;hh&gt;:&lt;mm&gt;:&lt;ss&gt; &lt;yyyy&gt;)</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label3</property>
                   </object>
@@ -839,6 +698,7 @@
                   <object class="GtkLabel" id="label2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">File format version as yyyymmdd. 19980704 is the "classic" format (fixed energy range), whereas 20020107 is reserved for future possible variable energy range.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label2</property>
                   </object>
@@ -851,6 +711,7 @@
                   <object class="GtkLabel" id="label1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">"SPCM" or "SPCI", specifying big ("Motorola") or little ("Intel") endian byte order, respectively.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label1</property>
                   </object>
@@ -883,6 +744,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Filename of the file which was loaded.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">Filename</property>
                   </object>
@@ -892,9 +754,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="label0">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Filename of the file which was loaded.</property>
                     <property name="halign">start</property>
                     <property name="label" translatable="yes">label0</property>
                   </object>
@@ -910,7 +773,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">29</property>
+                    <property name="top_attach">31</property>
                   </packing>
                 </child>
                 <child>
@@ -920,7 +783,237 @@
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
+                    <property name="top_attach">31</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="button1">
+                    <property name="label" translatable="yes">Export</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <signal name="clicked" handler="onButtonPressed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">32</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label" translatable="yes">Quit</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <signal name="clicked" handler="main_quit" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">32</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">Running cum.sum</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">30</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label25">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">label25</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">30</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">Contents</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
                     <property name="top_attach">29</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label24">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">label24</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">29</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">The &lt;H[]&gt; are the spectrum contents divided by the bin width.</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">Contents / bin width</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">28</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label23">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">label23</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">28</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">Energy bin width 
+[MeV/u]</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">27</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label22">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">label22</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">27</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">Energy bin (min,mid,max) 
+[MeV/u]</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">26</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label21">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">label21</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">26</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Currently selected energy bin.</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">Energy bin</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">25</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="spin3">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">Currently selected energy bin.</property>
+                    <property name="adjustment">adjustment3</property>
+                    <property name="climb_rate">1</property>
+                    <property name="snap_to_ticks">True</property>
+                    <property name="numeric">True</property>
+                    <property name="wrap">True</property>
+                    <signal name="value-changed" handler="on_spin3_value_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">25</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Number of energy bins for this species step and depth step.</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">#Energy bins</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">24</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label20">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Number of energy bins for this species step and depth step.</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">label20</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">24</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Lowest and highest energy found in this species spectrum.</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">Energy min max [MeV/u]</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">23</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label26">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">label26</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">23</property>
                   </packing>
                 </child>
               </object>
