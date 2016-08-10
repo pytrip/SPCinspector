@@ -238,7 +238,7 @@ class DBlock(object): # the depth block
     def __init__(self):
         self.depth = 0.0
         self.norm = 0.0
-        self.npart = 0
+        self.nparts = 0
         self.species=[] # list of species, for SBlock class
         
 class SBlock(object): # particle speicies block
