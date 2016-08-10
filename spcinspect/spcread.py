@@ -100,31 +100,31 @@ class SPC(object):
             
         if tag.code == 1:
             sdtype = ste + 'a' + str(tag.size)            
-            payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0]
+            payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0].decode("UTF-8")
             self.filetype = payload
             return payload
         
         if tag.code == 2:
             sdtype = ste + 'a' + str(tag.size)            
-            payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0]
+            payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0].decode("UTF-8")
             self.fileversion = payload
             return payload
             
         if tag.code == 3:
             sdtype = ste + 'a' + str(tag.size)            
-            payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0]
+            payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0].decode("UTF-8")
             self.filedate = payload
             return payload
             
         if tag.code == 4:
             sdtype = ste + 'a' + str(tag.size)            
-            payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0]
+            payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0].decode("UTF-8")
             self.targname = payload
             return payload
 
         if tag.code == 5:
             sdtype = ste + 'a' + str(tag.size)            
-            payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0]
+            payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0].decode("UTF-8")
             self.projname = payload
             return payload                  
             
