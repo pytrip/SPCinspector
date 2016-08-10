@@ -8,20 +8,88 @@ class SPC(object):
         self.filename = filename
 
     def read_spc(self):
-        print(self.filename)
-        self.read_header()
+        #print(self.filename)
+        self.read_data()
         
         
-    def read_header(self):
+    def read_data(self):
         fd = open(self.filename, "rb")
-        t  =  tag(fd)
-
-        for i in range(42):
+        t  =  Tag(fd)
+        db = []
+        eof = False
+        
+        while t.code < 9:
             t.get_tag()
             self.endian = t.endian
             pl = self.get_payload(fd,t)
-            print(t.code, t.size, pl)
+            #print(t.code, t.size, pl)
+        
+        for i in range(self.ndsteps):
+            t.get_tag()
+            pl = self.get_payload(fd,t)
+            #print(t.code, t.size, pl)
 
+            # construct the main object
+            if t.code == 10:
+                db.append(DBlock())
+                db[-1].depth = pl
+
+                t.get_tag()
+                if t.code == 11:
+                    pl = self.get_payload(fd,t)
+                    db[-1].dsnorm = pl
+
+                t.get_tag()
+                if t.code == 12:
+                    pl = self.get_payload(fd,t)
+                    db[-1].nparts = pl
+                    
+                for j in range(db[-1].nparts): # loop over all species
+                    t.get_tag()
+                    if t.code == 13:
+                        pl = self.get_payload(fd,t)
+                        db[-1].species.append(SBlock())
+                        db[-1].species[-1].z = pl[0]
+                        db[-1].species[-1].a = pl[1]
+                        db[-1].species[-1].lz = pl[2]
+                        db[-1].species[-1].la = pl[3]
+
+                    t.get_tag()    
+                    if t.code == 14:
+                        pl = self.get_payload(fd,t)
+                        db[-1].species[-1].dsnorm = pl
+
+                    t.get_tag()    
+                    if t.code == 15:
+                        pl = self.get_payload(fd,t)
+                        db[-1].species[-1].nc = pl
+
+                    t.get_tag()                            
+                    if t.code == 16:
+                        pl = self.get_payload(fd,t)
+                        db[-1].species[-1].ne = pl
+
+                    t.get_tag()        
+                    if t.code == 17:
+                        pl = self.get_payload(fd,t)
+                        db[-1].species[-1].ebindata = pl                    
+                    if t.code == 18: # both tags will not be present
+                        pl = self.get_payload(fd,t)
+                        db[-1].species[-1].ebindata = db[0].species[0].ebindata
+
+                    t.get_tag()                                
+                    if t.code == 19:
+                        pl = self.get_payload(fd,t)
+                        db[-1].species[-1].histdata = pl
+
+                    t.get_tag()            
+                    if t.code == 20:
+                        pl = self.get_payload(fd,t)
+                        db[-1].species[-1].cum = pl
+                        
+            self.data = db
+
+            
     def get_payload(self,fd,tag):
         cnt = 1
 
@@ -87,19 +155,19 @@ class SPC(object):
         if tag.code == 10: # depth [g/cm**2]
             sdtype = ste + 'f' + str(tag.size)
             payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0]
-            self.depth = payload
+            #self.depth = payload
             return payload
 
         if tag.code == 11: # normalization of this depth step
             sdtype = ste + 'f' + str(tag.size)
             payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0]
-            self.dsnorm = payload
+            #self.dsnorm = payload
             return payload                          
 
         if tag.code == 12: # number of particle species
             sdtype = ste + 'u' + str(tag.size)
             payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0]
-            self.nparts = payload
+            #self.nparts = payload
             return payload                          
 
         if tag.code == 13: # data block, Z and A
@@ -113,61 +181,80 @@ class SPC(object):
             payload[2] = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))
             payload[3] = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))
 
-            self.z = payload[0]
-            self.a = payload[1]
-            self.lz = payload[2]
-            self.la = payload[3]
+            #self.z = payload[0]
+            #self.a = payload[1]
+            #self.lz = payload[2]
+            #self.la = payload[3]
             
             return payload
             
         if tag.code == 14: # CUM: cumulated number (running sum) of fragments
             sdtype = ste +'f'+str(tag.size)
             payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0]
-            self.dsnorm = payload
+            #self.dsnorm = payload
             return payload
         
         if tag.code == 15: # nC: reserved for later use
             sdtype = ste + 'u' + str(tag.size)
             payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0]
-            self.nc = payload
+            #self.nc = payload
             return payload
         
         if tag.code == 16: # nE: number of energy bins
             sdtype = ste + 'u' + str(tag.size)
             payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0]
-            self.ne = payload
+            #self.ne = payload
             return payload
         
         if tag.code == 17: # E: energy bin values
             sdtype = ste + 'f8'
             cnt = int(tag.size/8)
             payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))
-            self.ebinvals = payload
+            #self.ebindata = payload
             return payload
         
         if tag.code == 18: # EREF: if tag is set, then use copy of ebin from tag #17.
             sdtype = ste + 'u8'
             cnt = int(tag.size/8)
             payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))[0]
-            self.eref = payload
+            #self.eref = payload
             return payload
         
         if tag.code == 19: # H[nE]: spectrum contens divided by the bin width
             sdtype = ste + 'f8' 
             cnt = int(tag.size/8)
             payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))
-            self.histvals = payload
+            #self.histdata = payload
             return payload
         
         if tag.code == 20: # running cumulated spectrum bin values
             sdtype = ste + 'f8'
             cnt = int(tag.size/8)
             payload = np.fromfile(fd,count=cnt,dtype=np.dtype(sdtype))
-            self.cum = payload
+            #self.cum = payload
             return payload
+
+class DBlock(object): # the depth block
+    def __init__(self):
+        self.depth = 0.0
+        self.norm = 0.0
+        self.npart = 0
+        self.species=[] # list of species, for SBlock class
         
-    
-class tag(object):
+class SBlock(object): # particle speicies block
+    def __init__(self):
+        self.z = 0.0
+        self.a = 0.0
+        self.lz = 0
+        self.la = 0
+        self.nc = 0
+        self.ne = 0
+        self.ebindata = []
+        self.histdata = []
+        self.cum = 0.0
+        
+
+class Tag(object):
     def __init__(self,fd):
         self.fd = fd
         self.code = 0
@@ -184,19 +271,18 @@ class tag(object):
             self._ste = '<' # little endian read
             code = np.fromfile(self.fd,count=1,dtype=np.dtype(self._ste + 'u4'))[0]
             self.fd.seek(-4,1) # rewind 4 bytes
-            print("NB1:",code)
             
             if code < 1 or code > 20: # if fail Intel, then:
                 self.endian = 1 # big endian
                 self._ste = '>' # big endian read
                 code = np.fromfile(self.fd,count=1,dtype=np.dtype(self._ste + 'u4'))[0]
-                print("NB2:",code)
                 self.fd.seek(-4,1) # rewind 4 bytes, retry
                 if code < 1 or code > 20:
                     print("Error: bad format in SPC file.")
                     exit()
                 else:
-                    print("Found big-endian format.")
+                    #print("Found big-endian format.")
+                    pass
                     
         self.code = np.fromfile(self.fd,count=1,dtype=np.dtype(self._ste + 'u4'))[0]
         self.size = np.fromfile(self.fd,count=1,dtype=np.dtype(self._ste + 'u4'))[0]
