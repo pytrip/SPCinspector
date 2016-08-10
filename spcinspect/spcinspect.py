@@ -6,6 +6,11 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 from spcread import *
 
+from matplotlib.figure import Figure
+from numpy import arange, pi, random, linspace
+import matplotlib.cm as cm
+from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas
+
 ppp = ""
 
 class Handler:
@@ -16,6 +21,8 @@ class Handler:
         self.window1 = builder.get_object("window1")
         self.window1.set_title("SPCinspector - No file loaded")
 
+        self.vbox1 = builder.get_object("vbox1")
+        
         self.label0 = builder.get_object("label0")
         self.label1 = builder.get_object("label1")
         self.label2 = builder.get_object("label2")
@@ -66,6 +73,43 @@ class Handler:
         print(ppp)
         if os.path.isfile(ppp):
             self.load_spc(ppp)
+
+
+        fig = Figure(figsize=(5,5), dpi=100)
+        #ax = fig.add_subplot(111, projection='polar')
+        self.ax = fig.add_subplot(111)
+        #x = [1, 2, 3, 4, 5]
+        #y = [1, 4, 9, 16, 25]
+        #self.ax.plot(x,y)
+        self.ax.set_xlabel('Energy [MeV/u]')
+        self.ax.set_ylabel('Histories')
+
+        
+        #sw = Gtk.ScrolledWindow()
+        #myfirstwindow.add(sw)
+
+        self.canvas = FigureCanvas(fig)
+        self.canvas.set_size_request(600,600)
+        self.vbox1.pack_end(self.canvas,True,True,True)
+
+    def update_plot(self):
+
+        d = self.spc.data[self.cur_depth]
+        ds = d.species[self.cur_species]
+
+        dse = ds.ebindata
+        dsh = ds.histdata
+        dsc = ds.rcumdata
+
+        print("NB:",len(dse),len(dsh),len(dsc))
+        
+        self.ax.cla()
+        self.ax.set_xlabel('Energy [MeV/u]')
+        self.ax.set_ylabel('Histories')
+        #self.ax.plot(dse[1:],dsc[1:]) # cumulative sum
+        self.ax.bar(dse[1:],dsh)
+        self.canvas.draw()
+        self.canvas.show()
         
     def onDeleteWindow(self, *args):
         Gtk.main_quit(*args)
@@ -80,14 +124,17 @@ class Handler:
     def on_spin1_value_changed(self,*args):
         self.cur_depth = self.spin1.get_value_as_int()-1       
         self.set_labels(self.spc)
-
+        self.update_plot()
+        
     def on_spin2_value_changed(self,*args):
         self.cur_species = self.spin2.get_value_as_int()-1
         self.set_labels(self.spc)
+        self.update_plot()
         
     def on_spin3_value_changed(self,*args):
         self.cur_ebin = self.spin3.get_value_as_int()-1
         self.set_labels(self.spc)
+        self.update_plot()
 
     def on_menuopen_activate(self,*args):
         dialog = Gtk.FileChooserDialog("Please choose a file", None,
@@ -123,7 +170,7 @@ class Handler:
         self.spin2.set_sensitive(True)
         self.spin3.set_sensitive(True)
 
-        self.button1.set_sensitive(True)
+        self.button1.set_sensitive(False) # Todo: currently disabled
         self.set_labels(spc)
         self.spc = spc
 
@@ -166,8 +213,12 @@ class Handler:
         self.label23.set_text('{:f}'.format(dsh))
         self.label24.set_text('{:f}'.format(dsh*(dse-dsel)))
         self.label25.set_text('{:f}'.format(dsc)) #cummulative sum
-        self.label26.set_text('{:.2f} {:.2f}'.format(ds.ebindata.min(),ds.ebindata.max())) 
+        self.label26.set_text('{:.2f} {:.2f}'.format(ds.ebindata.min(),ds.ebindata.max()))
 
+    def _do_expose(self, widget, event):
+        print("_do_expose")
+        self.canvas.draw()
+        self.canvas.show()
         
 
 if sys.argv[1] != None:
