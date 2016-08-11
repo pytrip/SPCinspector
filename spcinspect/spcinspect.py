@@ -148,7 +148,7 @@ class Handler:
     def on_spin3_value_changed(self,*args):
         self.cur_ebin = self.spin3.get_value_as_int()-1
         self.set_labels(self.spc)
-        self.update_plot()
+        #self.update_plot() # no need to, as the energy marker is missing.
 
     def on_menuopen_activate(self,*args):
         dialog = Gtk.FileChooserDialog("Please choose a file", None,
