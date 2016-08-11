@@ -70,11 +70,6 @@ class Handler:
         self.spc = []
         self.path = ""
         
-        print(ppp)
-        if os.path.isfile(ppp):
-            self.load_spc(ppp)
-
-
         fig = Figure(figsize=(5,5), dpi=100)
         #ax = fig.add_subplot(111, projection='polar')
         self.ax = fig.add_subplot(111)
@@ -92,6 +87,20 @@ class Handler:
         self.canvas.set_size_request(600,600)
         self.vbox1.pack_end(self.canvas,True,True,True)
 
+        self.zlut = {
+            1:'H',2:'He',
+            3:'Li',4:'Be',5:'B',6:'C',7:'N', 8:'O',9:'F',10:'Ne',
+            11:'Na',12:'Mg',13:'Al',14:'Si',15:'P',16:'S',17:'Cl',18:'Ar',
+            19:'K',20:'Ca'
+        }
+
+        print(ppp)
+        if os.path.isfile(ppp):
+            self.load_spc(ppp)
+
+
+
+        
     def update_plot(self):
 
         d = self.spc.data[self.cur_depth]
@@ -101,11 +110,16 @@ class Handler:
         dsh = ds.histdata
         dsc = ds.rcumdata
 
-        print("NB:",len(dse),len(dsh),len(dsc))
+        #print("NB:",len(dse),len(dsh),len(dsc))        
         
         self.ax.cla()
         self.ax.set_xlabel('Energy [MeV/u]')
         self.ax.set_ylabel('Histories')
+
+        # plot legent in upper right corner
+        text = r'$\mathregular{^{'+str(ds.la)+'}}$'+self.zlut.get(ds.lz,'?')
+        self.ax.text(0.90, 0.94, text, fontsize=15,transform=self.ax.transAxes)
+
         #self.ax.plot(dse[1:],dsc[1:]) # cumulative sum
         self.ax.bar(dse[1:],dsh)
         self.canvas.draw()
@@ -174,6 +188,8 @@ class Handler:
         self.set_labels(spc)
         self.spc = spc
 
+        self.update_plot()
+        
     def set_labels(self,spc):
         self.label0.set_text(self.filename)
         self.label1.set_text(spc.filetype)
